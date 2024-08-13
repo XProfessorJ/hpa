@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: besteffort-pod
+spec:
+  containers:
+  - name: my-container
+    image: nginx
+    resources: {}  # 没有指定请求和限制

@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mosquitto-no-config
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mosquitto-no-config
+  template:
+    metadata:
+      labels:
+        app: mosquitto-no-config
+    spec:
+      containers:
+      - name: mosquitto-no-config
+        image: eclipse-mosquitto:1.6.2
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 1883

@@ -1,0 +1,24 @@
+apiVersion: apps/v1  
+kind: Deployment  
+metadata:  
+  name: php-apache  
+spec:  
+  replicas: 1  
+  selector:  
+    matchLabels:  
+      run: php-apache  
+  template:  
+    metadata:  
+      labels:  
+        run: php-apache  
+    spec:  
+      containers:  
+      - image: xprofessor0/php:v1 # 确保这里使用正确的镜像标签，比如 php:7.4-apache  
+        imagePullPolicy: IfNotPresent  
+        name: php-apache  
+        ports:  
+        - containerPort: 80  
+          protocol: TCP  
+        resources:  
+          requests:  
+            cpu: 200m
